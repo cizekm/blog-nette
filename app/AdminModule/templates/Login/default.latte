@@ -1,0 +1,28 @@
+{extends none}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="{$baseUrl}/admin/css/styles.css">
+
+    <script type="text/javascript" src="{$baseUrl}/admin/js/app.main.js"></script>
+
+    <title>Administrace Blogu - Přihlášení</title>
+</head>
+
+<body>
+    {snippet snLoginForm}
+
+        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+        {control loginForm}
+    {/snippet}
+
+{block scripts}
+    <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+{/block}
+</body>
+</html>

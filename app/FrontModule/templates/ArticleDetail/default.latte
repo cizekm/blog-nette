@@ -1,0 +1,23 @@
+
+{block title}{$article->title|stripTags} | {include parent}{/block}
+
+{block content}
+
+    <a href="{$backUrl}" title="Zpět na seznam článků">&laquo; Zpět za seznam článků</a>
+
+    <h1>{$article->title}</h1>
+
+    <article>
+        <div class="content">
+            {$article->content|noescape}
+        </div>
+
+        <div class="tags" n:if="count($article->tags) > 0">
+            Tagy:
+            <ul>
+                <li n:foreach="$article->tags as $tag">{$tag->title}</li>
+            </ul>
+        </div>
+    </article>
+
+{/block}

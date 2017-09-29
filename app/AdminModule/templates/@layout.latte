@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" type="text/css" href="{$baseUrl}/resources/admin/css/styles.css">
+	<link rel="stylesheet" type="text/css" href="{$baseUrl}/resources/admin/css/datagrid.css">
+	<link rel="stylesheet" type="text/css" href="{$baseUrl}/resources/admin/css/datagrid-spinners.css">
+
+	<script type="text/javascript" src="{$baseUrl}/resources/admin/js/app.main.js"></script>
+
+	<title>{block title}Administrace Blogu{/block}</title>
+</head>
+
+<body>
+	<h1>{block heading}Administrace blogu{/block}</h1>
+
+	<div>
+		Přihlášen: {$user->getIdentity()->getId()} (<a n:href="Login:logout" title="Odhlásit">Odhlásit</a>)
+		<br /><br />
+	</div>
+
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+	{include content}
+
+	{block scripts}
+		<script
+				src="https://code.jquery.com/jquery-3.2.1.min.js"
+				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+				crossorigin="anonymous"></script>
+		<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+		<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+		<script type="text/javascript" src="{$baseUrl}/resources/admin/js/app.main.js"></script>
+		<script type="text/javascript" src="{$baseUrl}/resources/admin/js/datagrid.js"></script>
+		<script type="text/javascript" src="{$baseUrl}/resources/admin/js/datagrid-instant-url-refresh.js"></script>
+		<script type="text/javascript" src="{$baseUrl}/resources/admin/js/datagrid-spinners.js"></script>
+	{/block}
+</body>
+</html>

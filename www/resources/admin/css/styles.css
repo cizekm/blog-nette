@@ -1,0 +1,23 @@
+div.error, form span.error {
+    color: red;
+}
+
+div.success {
+    color: green
+}
+
+div.warning {
+    color: orange;
+}
+
+form table {
+    width: 70%;
+}
+
+form table th {
+    width: 20%;
+}
+
+input[type=text], textarea {
+    width: 100%;
+}

@@ -1,0 +1,13 @@
+parameters:
+	secrets:
+		db:
+			user: <db_user>
+			password: <db_password>
+			dbname: <db_name>
+
+	baseUrl: https://localhost/blog/www
+
+	adminUsers:
+		admin: <admin_password>
+		<another_user>: <another_password>
+

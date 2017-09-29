@@ -1,0 +1,28 @@
+
+{block title}Články{if $page > 1} - strana {$page}{/if} | {include parent}{/block}
+
+{block content}
+
+    <h1>Blog</h1>
+
+    <div class="articles-list">
+        {if count($articles) > 0}
+            {foreach $articles as $article}
+                <div class="article-item">
+                    <h2><a n:href="ArticleDetail:default, articleUrl => $article->url, back => $presenter->link('this')" title="{$article->title}">{$article->title}</a></h2>
+                    <span class="article-timestamp">{$article->getPublishedTimestampString($timestampFormat)}</span>
+                    <span class="article-detail-link">
+                        <a n:href="ArticleDetail:default, articleUrl => $article->url, back => $presenter->link('this')" title="{$article->title}">Přečíst článek...</a>
+                    </span>
+                </div>
+            {/foreach}
+
+            {control paginator}
+        {else}
+            <p>
+                Prozatím zde nejsou žádné články
+            </p>
+        {/if}
+    </div>
+
+{/block}

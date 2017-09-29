@@ -1,0 +1,38 @@
+parameters:
+	adminUsers: []
+
+	articles:
+		timestampFormat: j.n.Y H:i
+		itemsPerPage: 2
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+services:
+	router: App\RouterFactory::createRouter
+	authenticator: Nette\Security\SimpleAuthenticator(%adminUsers%)
+
+	- App\Managers\ArticlesManager
+	- App\Managers\TagsManager
+
+extensions:
+	console: Kdyby\Console\DI\ConsoleExtension
+	events: Kdyby\Events\DI\EventsExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	visualPaginator: IPub\VisualPaginator\DI\VisualPaginatorExtension
+
+doctrine:
+	user: %secrets.db.user%
+	password: %secrets.db.password%
+	dbname: %secrets.db.dbname%
+	metadata:
+		App\Models: %appDir%/models
